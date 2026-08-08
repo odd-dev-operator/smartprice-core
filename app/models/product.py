@@ -9,3 +9,4 @@ class Product:
     category: Category
     brand: str | None = None
     model: str | None = None
+    ean: str | None = None

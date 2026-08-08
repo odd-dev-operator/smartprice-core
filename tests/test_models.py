@@ -81,3 +81,14 @@ def test_store_rejects_invalid_country_code():
             country="Spain",
             website="https://example.com",
         )
+
+def test_product_can_store_ean():
+    product = Product(
+        name='LG OLED C5 65"',
+        category=Category.TELEVISIONS,
+        brand="LG",
+        model="OLED65C54LA",
+        ean="8806096362426",
+    )
+
+    assert product.ean == "8806096362426"        
