@@ -1,3 +1,5 @@
+import pytest
+
 from app.models.category import Category
 from app.models.price_result import PriceResult
 from app.models.product import Product
@@ -61,3 +63,21 @@ def test_price_result_creation():
     assert result.price == 1299.99
     assert result.currency == "EUR"
     assert result.url == "https://www.amazon.es"
+
+    def test_store_country_is_normalized_to_uppercase():
+        store = Store(
+        name="Amazon ES",
+        country="es",
+        website="https://www.amazon.es",
+    )
+
+    assert store.country == "ES"
+
+
+def test_store_rejects_invalid_country_code():
+    with pytest.raises(ValueError):
+        Store(
+            name="Invalid Store",
+            country="Spain",
+            website="https://example.com",
+        )
