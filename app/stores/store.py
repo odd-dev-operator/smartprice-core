@@ -6,6 +6,7 @@ class Store:
     name: str
     country: str
     website: str
+    active: bool = True
 
     def __post_init__(self) -> None:
         self.country = self.country.upper()
